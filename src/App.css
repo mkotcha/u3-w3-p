@@ -87,15 +87,16 @@ ul {
   justify-content: space-between;
 }
 
-.playerControls a img {
+.playerControls span img {
   width: 14px;
   margin-top: 1rem;
   filter: brightness(60%);
 }
 
-.playerControls a:hover {
+.playerControls span:hover {
   filter: brightness(80%);
   color: #282828 !important;
+  cursor: pointer;
 }
 
 .progress {

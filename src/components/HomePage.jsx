@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import SearchResult from "./SearchResult";
 import { useEffect, useState } from "react";
 import SingleRandomArtist from "./SingleRandomArtist";
@@ -19,7 +18,6 @@ const HomePage = () => {
     const rand = [];
     while (rand.length < 4) {
       const name = arr[Math.floor(Math.random() * arr.length)];
-      console.log("name: ", name);
       if (!rand.includes(name)) {
         rand.push(name);
       }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import SingleAlbumSong from "./SingleAlbumSong";
 import SearchResult from "./SearchResult";
@@ -27,27 +27,13 @@ const Album = () => {
           method: "GET",
           headers,
         });
-
-        // let imgContainer = document.querySelector("#img-container"); // gets a reference to the image container
-        // let trackList = document.querySelector("#trackList"); // gets a reference to the tracklist div
-
         if (response.ok) {
           let album = await response.json(); // transforms the response into a JSON
-          //   imgContainer.innerHTML = albumArt(album); // creates the albumArt for the img-container
-          //   for (let i = 0; i < album.tracks.data.length; i++) {
-          //     let div = document.createElement("div");
-          //     div.innerHTML += song(album.tracks.data[i]); // use "song" method to create the item
-          //     trackList.appendChild(div); // add the item to the tracklist
-          //   }
-          console.log(album);
           setAlbum(album);
         } else {
-          // something went wrong with the request --> i.e. headers missing, wrong HTTP Method
-          //   document.querySelector("#img-container").innerHTML = "NOT OK" + (await response.text());
           console.log(response.text);
         }
       } catch (exception) {
-        // ex.: Url is not correct, Internal Server Error
         console.log(exception);
       }
     };
@@ -82,7 +68,7 @@ const Album = () => {
         <Col md={8} className="p-5">
           <Row>
             <Col md={10} className="mb-5" id="trackList">
-              {album && album.tracks.data.map(track => <SingleAlbumSong track={track} />)}
+              {album && album.tracks.data.map((track, i) => <SingleAlbumSong key={i} track={track} />)}
             </Col>
           </Row>
         </Col>

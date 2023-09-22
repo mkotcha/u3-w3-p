@@ -1,7 +1,7 @@
 import { Button, Form, InputGroup, Nav, Navbar } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
-import { searchFetch, setSearchFilter, setSearchSongs } from "../redux/actions";
+import { searchFetch, setSearchFilter } from "../redux/actions";
 
 const SideBar = () => {
   const searchFilter = useSelector(state => state.search.searchFilter);
