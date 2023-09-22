@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import SearchResult from "./SearchResult";
 import { useEffect, useState } from "react";
 import SingleRandomArtist from "./SingleRandomArtist";
-import { addHhArtist, addPopArtist, addRockArtist, hideSearch, unsetSearchSongs } from "../redux/actions";
+import { hideSearch, unsetSearchSongs } from "../redux/actions";
 
 const HomePage = () => {
   const showSearch = useSelector(state => state.search.showSearch);

@@ -14,7 +14,7 @@ const Album = () => {
 
   let headers = new Headers({
     "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-    "X-RapidAPI-Key": "c74a0a086emshf55ffb8dbdcb59ap17a486jsnb83bb4d3e387",
+    "X-RapidAPI-Key": process.env.REACT_APP_X_RAPID_API_KEY_KEY,
   });
 
   useState(() => {
