@@ -1,32 +1,44 @@
+import { Col, Row } from "react-bootstrap";
+
 const Player = () => {
   return (
     <>
-      <div className="container-fluid fixed-bottom bg-container pt-1">
-        <div className="row">
-          <div className="col-lg-10 offset-lg-2">
-            <div className="row">
-              <div className="col-6 col-md-4 col-lg-2 offset-3 offset-md-4 offset-lg-5 playerControls mt-1">
-                <div className="row">
-                  <a href="#">
-                    <img src="assets/img/playerbuttons/Shuffle.png" alt="shuffle" />
-                  </a>
-                  <a href="#">
-                    <img src="assets/img/playerbuttons/Previous.png" alt="shuffle" />
-                  </a>
-                  <a href="#">
-                    <img src="assets/img/playerbuttons/Play.png" alt="shuffle" />
-                  </a>
-                  <a href="#">
-                    <img src="assets/img/playerbuttons/Next.png" alt="shuffle" />
-                  </a>
-                  <a href="#">
-                    <img src="assets/img/playerbuttons/Repeat.png" alt="shuffle" />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="row justify-content-center playBar py-3">
-              <div className="col-8 col-md-6">
+      <div className="container-fluid fixed-bottom bg-container ">
+        <Row>
+          <Col lg={{ span: 10, offset: 2 }}>
+            <Row className="justify-content-center ">
+              <Col xs={{ span: 6, offset: 3 }} lg={{ span: 5, offset: 2 }} className="playerControls mt-1">
+                <Row>
+                  <Col>
+                    <a href="#">
+                      <img src="/assets/img/playerbuttons/Shuffle.png" alt="shuffle" />
+                    </a>
+                  </Col>
+                  <Col>
+                    <a href="#">
+                      <img src="/assets/img/playerbuttons/Previous.png" alt="previous" />
+                    </a>
+                  </Col>
+                  <Col>
+                    <a href="#">
+                      <img src="/assets/img/playerbuttons/Play.png" alt="play" />
+                    </a>
+                  </Col>
+                  <Col>
+                    <a href="#">
+                      <img src="/assets/img/playerbuttons/Next.png" alt="next" />
+                    </a>
+                  </Col>
+                  <Col>
+                    <a href="#">
+                      <img src="/assets/img/playerbuttons/Repeat.png" alt="repeat" />
+                    </a>
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+            <Row className="justify-content-center  py-3">
+              <Col xs={{ span: 7, offset: 0 }} lg={{ span: 5, offset: 2 }}>
                 <div className="progress">
                   <div
                     className="progress-bar"
@@ -35,10 +47,10 @@ const Player = () => {
                     aria-valuemin="0"
                     aria-valuemax="100"></div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
       </div>
     </>
   );
