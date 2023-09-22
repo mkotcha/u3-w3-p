@@ -4,6 +4,7 @@ import SearchResult from "./SearchResult";
 import { useEffect, useState } from "react";
 import SingleRandomArtist from "./SingleRandomArtist";
 import { hideSearch, unsetSearchSongs } from "../redux/actions";
+import TopBar from "./TopBar";
 
 const HomePage = () => {
   const showSearch = useSelector(state => state.search.showSearch);
@@ -40,15 +41,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="row">
-        <div className="col-9 col-lg-11 mainLinks d-none d-md-flex">
-          <Link to="/">TRENDING</Link>
-          <Link to="/">PODCAST</Link>
-          <Link to="/">MOODS AND GENRES</Link>
-          <Link to="/">NEW RELEASES</Link>
-          <Link to="/">DISCOVER</Link>
-        </div>
-      </div>
+      <TopBar />
       <div className="row">
         <div className="col-10">{showSearch && <SearchResult />}</div>
       </div>

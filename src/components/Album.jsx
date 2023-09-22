@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Container } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import SingleAlbumSong from "./SingleAlbumSong";
 import SearchResult from "./SearchResult";
 import { useDispatch, useSelector } from "react-redux";
 import { hideSearch, unsetSearchSongs } from "../redux/actions";
+import TopBar from "./TopBar";
 
 const Album = () => {
   const [album, setAlbum] = useState(null);
@@ -55,47 +56,37 @@ const Album = () => {
 
   return (
     <>
-      <div className="col-12 col-md-9 offset-md-3 mainPage">
-        <div className="row mb-3">
-          <div className="col-9 col-lg-11 mainLinks d-none d-md-flex">
-            <Link to="/">TRENDING</Link>
-            <Link to="/">PODCAST</Link>
-            <Link to="/">MOODS AND GENRES</Link>
-            <Link to="/">NEW RELEASES</Link>
-            <Link to="/">DISCOVER</Link>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-10">{showSearch && <SearchResult />}</div>
-        </div>
-        <div className="row">
-          <div className="col-md-3 pt-5 text-center" id="img-container">
-            {album && (
-              <>
-                <img src={album.cover_medium} className="card-img img-fluid" alt="Album" />
-                <div className="mt-4 text-center">
-                  <p className="album-title">{album.title}</p>
-                </div>
-                <div className="text-center">
-                  <p className="artist-name">{album.artist.name}</p>
-                </div>
-                <div className="mt-4 text-center">
-                  <button id="btnPlay" className="btn btn-success" type="button">
-                    Play
-                  </button>
-                </div>
-              </>
-            )}
-          </div>
-          <div className="col-md-8 p-5">
-            <div className="row">
-              <div className="col-md-10 mb-5" id="trackList">
-                {album && album.tracks.data.map(track => <SingleAlbumSong track={track} />)}
+      <TopBar />
+      <Row>
+        <Col xs={10}>{showSearch && <SearchResult />}</Col>
+      </Row>
+      <Row>
+        <Col md={3} className="pt-5" id="img-container">
+          {album && (
+            <>
+              <img src={album.cover_medium} className="card-img img-fluid" alt="Album" />
+              <div className="mt-4 text-center">
+                <p className="album-title">{album.title}</p>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
+              <Link to={"/artist/" + album.artist.id} className="text-center text-decoration-none">
+                <p className="artist-name ">{album.artist.name}</p>
+              </Link>
+              <div className="mt-4 text-center">
+                <button id="btnPlay" className="btn btn-success" type="button">
+                  Play
+                </button>
+              </div>
+            </>
+          )}
+        </Col>
+        <Col md={8} className="p-5">
+          <Row>
+            <Col md={10} className="mb-5" id="trackList">
+              {album && album.tracks.data.map(track => <SingleAlbumSong track={track} />)}
+            </Col>
+          </Row>
+        </Col>
+      </Row>
     </>
   );
 };
