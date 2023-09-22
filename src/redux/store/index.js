@@ -5,7 +5,6 @@ import persistStore from "redux-persist/es/persistStore";
 import { encryptTransform } from "redux-persist-transform-encrypt";
 import playerReducer from "../reducers/player";
 import searchReducer from "../reducers/search";
-import artistReducer from "../reducers/artists";
 
 const persistConfig = {
   key: "root",
@@ -21,7 +20,6 @@ const persistConfig = {
 const mainReducer = combineReducers({
   player: playerReducer,
   search: searchReducer,
-  artist: artistReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, mainReducer);

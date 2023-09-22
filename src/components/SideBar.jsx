@@ -12,7 +12,7 @@ const SideBar = () => {
         className="navbar navbar-expand-md navbar-white bg-navbar fixed-left justify-content-between p-3 pt-4"
         id="sidebar">
         <div className="nav-container">
-          <Navbar.Brand className="navbar-brand" href="index.html">
+          <Navbar.Brand className="navbar-brand">
             <img src="assets/img/logo/Spotify_Logo.png" alt="Spotify_Logo" width="131" height="40" />
           </Navbar.Brand>
           <Navbar.Toggle
