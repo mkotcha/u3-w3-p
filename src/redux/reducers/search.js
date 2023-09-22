@@ -33,6 +33,7 @@ const searchReducer = (state = initialState, action) => {
       return {
         ...state,
         songs: [],
+        searchFilter: "",
       };
 
     default:

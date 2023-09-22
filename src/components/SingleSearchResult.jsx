@@ -1,7 +1,10 @@
 import { Col } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { setSong } from "../redux/actions";
 
-const singleSearchResult = ({ song }) => {
+const SingleSearchResult = ({ song }) => {
+  const dispatch = useDispatch();
   return (
     <>
       <Col className="col text-center">
@@ -9,10 +12,10 @@ const singleSearchResult = ({ song }) => {
           <img className="img-fluid" src={song.album.cover_medium} alt="1" />
         </Link>
         <p>
-          <Link to={"/album/" + song.album.id} className="text-decoration-none">
+          <div className="text-decoration-none" onClick={() => dispatch(setSong(song))}>
             Title: "{song.title.length < 16 ? song.title : song.title.substring(0, 16)}..."
             <br />
-          </Link>
+          </div>
           <Link href={"/artist_page.html?id=" + song.artist.id} className="text-decoration-none">
             Artist: {song.artist.name}
           </Link>
@@ -21,4 +24,4 @@ const singleSearchResult = ({ song }) => {
     </>
   );
 };
-export default singleSearchResult;
+export default SingleSearchResult;

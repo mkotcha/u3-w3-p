@@ -2,16 +2,24 @@ import { useState } from "react";
 import { Container } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import SingleAlbumSong from "./SingleAlbumSong";
+import SearchResult from "./SearchResult";
+import { useDispatch, useSelector } from "react-redux";
+import { hideSearch, unsetSearchSongs } from "../redux/actions";
 
 const Album = () => {
   const [album, setAlbum] = useState(null);
   const params = useParams();
+  const showSearch = useSelector(state => state.search.showSearch);
+  const dispatch = useDispatch();
+
   let headers = new Headers({
     "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
     "X-RapidAPI-Key": "c74a0a086emshf55ffb8dbdcb59ap17a486jsnb83bb4d3e387",
   });
 
   useState(() => {
+    dispatch(unsetSearchSongs());
+    dispatch(hideSearch());
     const fetchAlbum = async () => {
       try {
         let response = await fetch("https://striveschool-api.herokuapp.com/api/deezer/album/" + params.id, {
@@ -58,18 +66,21 @@ const Album = () => {
           </div>
         </div>
         <div className="row">
+          <div className="col-10">{showSearch && <SearchResult />}</div>
+        </div>
+        <div className="row">
           <div className="col-md-3 pt-5 text-center" id="img-container">
             {album && (
               <>
-                <img src={album.cover_medium} class="card-img img-fluid" alt="Album" />
-                <div class="mt-4 text-center">
-                  <p class="album-title">{album.title}</p>
+                <img src={album.cover_medium} className="card-img img-fluid" alt="Album" />
+                <div className="mt-4 text-center">
+                  <p className="album-title">{album.title}</p>
                 </div>
-                <div class="text-center">
-                  <p class="artist-name">{album.artist.name}</p>
+                <div className="text-center">
+                  <p className="artist-name">{album.artist.name}</p>
                 </div>
-                <div class="mt-4 text-center">
-                  <button id="btnPlay" class="btn btn-success" type="button">
+                <div className="mt-4 text-center">
+                  <button id="btnPlay" className="btn btn-success" type="button">
                     Play
                   </button>
                 </div>

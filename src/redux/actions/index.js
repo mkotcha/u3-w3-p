@@ -19,6 +19,7 @@ export const addHhArtist = artist => ({ type: ADD_HH, payload: artist });
 export const setSearchFilter = searchFilter => ({ type: SET_SEARCH_FILTER, payload: searchFilter });
 export const setSearchSongs = searchSongs => ({ type: SET_SEARCH_SONGS, payload: searchSongs });
 export const unsetSearchSongs = () => ({ type: UNSET_SEARCH_SONGS });
+export const setSong = track => ({ type: SET_SONG, payload: track });
 
 export const searchFetch = searchFilter => {
   return async dispatch => {

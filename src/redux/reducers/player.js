@@ -1,7 +1,7 @@
 import { SET_SONG } from "../actions";
 
 const initialState = {
-  content: [],
+  song: null,
 };
 
 const playerReducer = (state = initialState, action) => {
@@ -9,7 +9,7 @@ const playerReducer = (state = initialState, action) => {
     case SET_SONG:
       return {
         ...state,
-        content: [...state.content, action.payload],
+        song: action.payload,
       };
 
     default:
