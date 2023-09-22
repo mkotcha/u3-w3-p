@@ -1,7 +1,11 @@
 import { Button, Form, InputGroup, Nav, Navbar } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
+import { searchFetch, setSearchFilter, setSearchSongs } from "../redux/actions";
 
 const SideBar = () => {
+  const searchFilter = useSelector(state => state.search.searchFilter);
+  const dispatch = useDispatch();
   return (
     <>
       <Navbar
@@ -39,9 +43,11 @@ const SideBar = () => {
                       type="text"
                       className="form-control mb-2"
                       id="searchField"
+                      value={searchFilter}
                       placeholder="Search"
                       aria-label="Search"
                       aria-describedby="basic-addon2"
+                      onChange={e => dispatch(setSearchFilter(e.target.value))}
                     />
                     <div className="input-group-append" style={{ marginbottom: `4%` }}>
                       <Button
@@ -49,8 +55,7 @@ const SideBar = () => {
                         className="btn btn-outline-secondary "
                         type="button"
                         id="button-addon1"
-                        // onClick="search()"
-                      >
+                        onClick={() => dispatch(searchFetch(searchFilter))}>
                         GO
                       </Button>
                     </div>

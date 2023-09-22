@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import SearchResult from "./SearchResult";
 import { useEffect } from "react";
 import SingleRandomArtist from "./SingleRandomArtist";
-import { addHhArtist, addPopArtist, addRockArtist } from "../redux/actions";
+import { addHhArtist, addPopArtist, addRockArtist, hideSearch, unsetSearchSongs } from "../redux/actions";
 
 const HomePage = () => {
-  const showSearch = useSelector(state => state.showSearch);
+  const showSearch = useSelector(state => state.search.showSearch);
   const artistRandom = useSelector(state => state.artist);
   const dispatch = useDispatch();
   let rockArtists = ["queen", "u2", "thepolice", "eagles", "thedoors", "oasis", "thewho", "bonjovi"];
@@ -20,6 +20,9 @@ const HomePage = () => {
   let hipHopRandomArtists = [];
 
   useEffect(() => {
+    dispatch(unsetSearchSongs());
+    dispatch(hideSearch());
+
     while (rockRandomArtists.length < 4) {
       // pushes elements inside the array until it has 4 strings
       let artist = rockArtists[Math.floor(Math.random() * rockArtists.length)]; // select an element from the array with an index between 0 and 7
